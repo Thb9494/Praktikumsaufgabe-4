@@ -6,6 +6,12 @@ public class City {
   private double longitude;
   private double latitude;
 
+  public City(String name, double longitude, double latitude) {
+    this.name = name;
+    this.longitude = longitude;
+    this.latitude = latitude;
+  }
+
   //getter und setter
   public String getName() {
     return name;
@@ -29,7 +35,8 @@ public class City {
   }
 
   public void toString(City city) {
-   System.out.println(""+ name + " " + longitude + " " + latitude + "\n");
+    System.out.println( ""+ getName() + " " + getLongitude() + " " + getLatitude() + "\n");
+   
     
   }
 }

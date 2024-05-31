@@ -21,5 +21,20 @@ public class Main {
     Augsburg.toString(Augsburg);
     Regensburg.toString(Regensburg);
     Wuerzburg.toString(Wuerzburg);
+
+    //direkte Verbindung zwischen Städten hinzufügen
+    Ingolstadt.addConnection(Muenchen);
+    Ingolstadt.addConnection(Nuernberg);
+    Ingolstadt.addConnection(Regensburg);
+    Ingolstadt.addConnection(Augsburg);
+    Muenchen.addConnection(Augsburg);
+    Ulm.addConnection(Augsburg);
+    Stuttgart.addConnection(Ulm);
+    Stuttgart.addConnection(Nuernberg);
+    Stuttgart.addConnection(Wuerzburg);
+    Regensburg.addConnection(Muenchen);
+    Regensburg.addConnection(Nuernberg);
+    Nuernberg.addConnection(Ulm);
   }
+
 }

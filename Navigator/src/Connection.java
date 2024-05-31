@@ -10,10 +10,7 @@ public class Connection {
         this.city2 = city2;
         this.distance = getDistanceInKm(city1, city2); //hier wird die Distanz zwischen den beiden Städten berechnet
     }
-
-  
-
-    private double getDistanceInKm(City city1, City city2) {
+ private double getDistanceInKm(City city1, City city2) { //Methode, um die Distanz zwischen den beiden Städten zu berechnen
         double earthRadiusKm = 6371.0;
 
         double lat1 = city1.getLatitude();
@@ -37,6 +34,16 @@ public class Connection {
 
     private double degreesToRadians(double degrees) {
         return degrees * Math.PI / 180;
+    }
+
+    public City getOtherCity(City city) {
+        if (city.equals(city1)) {
+            return city2;
+        } else if (city.equals(city2)) {
+            return city1;
+        } else {
+            return null;
+        }
     }
 
    

@@ -56,4 +56,9 @@ public class City {
     public ArrayList<Connection> getConnections() {
         return connections;
     }
+
+    public String getRouteTo(City destination) {
+        //Die Methode wird die Route mit allen Städten (Start, Zwischenstationen und Endpunkt) als String zurückgeben.
+        return Route.getShortestRoute(this, destination).toString();
+    }
   }

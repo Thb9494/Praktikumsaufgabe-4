@@ -22,10 +22,13 @@ public class Route {
   public void appendCity(City city, Connection connection) {
     routeCities.add(city);
     if (connection != null) {
-      City previousCity = routeCities.get(routeCities.size() - 2); // Die vorherige Stadt in der Route
-      totalDistance += connection.getDistanceInKm(previousCity, city); // Distanz zwischen der vorherigen und der aktuellen Stadt
+      City previousCity = routeCities.get(routeCities.size() - 2); // Die vorherige Stadt in der Route, da letzte Stadt
+                                                                   // die aktuelle Stadt ist
+      totalDistance += connection.getDistanceInKm(previousCity, city); // Distanz zwischen der vorherigen und der
+                                                                       // aktuellen Stadt
     }
-}
+  }
+
   public boolean containsCity(City city) {
     return routeCities.contains(city);
   }
@@ -71,20 +74,20 @@ public class Route {
       City destination, Connection connection) {
     currentRoute.appendCity(currentCity, connection);
 
-    if (currentCity.equals(destination)) {
+    if (currentCity.equals(destination)) { // Wenn die aktuelle Stadt das Ziel ist, füge die Route zu den möglichen
+                                           // Routen hinzu
       allPossibleRoutes.add(currentRoute);
       return;
     } else {
-      // Erhalte alle möglichen Verbindungen von der aktuellen Stadt
-      List<Connection> possibleNextCities = currentCity.getConnections();
 
-      // Iteriere durch alle möglichen nächsten Städte
-      for (int i = 0; i < possibleNextCities.size(); i++) {
+      List<Connection> possibleNextCities = currentCity.getConnections(); // Erhalte alle möglichen Verbindungen von der
+                                                                          // aktuellen Stadt
+
+      for (int i = 0; i < possibleNextCities.size(); i++) { // Iteriere durch alle möglichen nächsten Städte
         City otherCity = possibleNextCities.get(i).getOtherCity(currentCity);
 
-        // Vermeide Zyklen durch Überprüfung, ob die Stadt bereits in der aktuellen
-        // Route enthalten ist
-        if (!currentRoute.containsCity(otherCity)) {
+        if (!currentRoute.containsCity(otherCity)) { // Vermeide Zyklen durch Überprüfung, ob die Stadt bereits in der
+                                                     // aktuellen Route enthalten ist
           Route continuedRoute = new Route(currentRoute);
           addAllRoutes(allPossibleRoutes, continuedRoute, otherCity, destination, possibleNextCities.get(i));
         }

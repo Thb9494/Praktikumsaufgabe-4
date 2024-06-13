@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Route {
   private ArrayList<City> routeCities;
-  private double totalDistance;
+  private int totalDistance;
 
   // default constructor
   private Route() {
